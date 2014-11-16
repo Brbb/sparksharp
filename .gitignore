@@ -6,3 +6,7 @@
 *.nupkg
 
 SparkSharp/packages/RestSharp.105.0.1/readme.txt
+
+*.exe
+
+*.mdb
