@@ -17,7 +17,7 @@ namespace Tester
 			if (auth != null)
 				Configuration.AccessToken = auth.Access_Token;
 
-			Spark.SparkResponse response =  Spark.RESTCore.SparkGetAsync ("temperature").Result;
+			Spark.VariableResponse response =  Spark.RESTCore.GetVariableAsync("temperature").Result;
 			Console.WriteLine(response.Result);
 
 			var tokens = Spark.RESTCore.ListTokensAsync ("user", "password").Result;
