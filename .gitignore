@@ -22,3 +22,5 @@ Spark/obj/x86/Release/Spark.csproj.FilesWrittenAbsolute.txt
 Tester/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
 
 Tester/obj/x86/Debug/Tester.csproj.FilesWrittenAbsolute.txt
+
+packages/Newtonsoft.Json.6.0.6/tools/install.ps1
