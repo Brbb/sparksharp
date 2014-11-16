@@ -45,4 +45,7 @@
       <Name>Spark</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Ignore.txt" />
+  </ItemGroup>
 </Project>

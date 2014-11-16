@@ -14,9 +14,8 @@ namespace Spark
 	public class RESTCore
 	{
 
-
-
 		#region Auth
+
 
 		public static async Task<VariableResponse> GetVariableAsync(string variable)
 		{
@@ -33,6 +32,9 @@ namespace Spark
 			return null;
 
 		}
+
+
+		// var result = Spark.RESTCore.CallFunctionAsync("brew").Result;
 
 		public static async Task<FunctionResponse> CallFunctionAsync(string functionName){
 
@@ -62,6 +64,10 @@ namespace Spark
 
 			return null;
 		}
+
+
+
+		//	var tokens = Spark.RESTCore.ListTokensAsync ("user", "password").Result;
 
 		public static async Task<List<TokenResponse>> ListTokensAsync(string email, string secret)
 		{
@@ -95,6 +101,13 @@ namespace Spark
 //				"expires_in": 7776000
 //			}
 
+
+// 			This is the equivalent SparkSharp way to ask for an auth token for the specified user (email).
+
+// 			var auth = Spark.RESTCore.PostAuthAsync ("user", "password").Result;
+//			 if (auth != null)
+//				Configuration.AccessToken = auth.Access_Token;
+//
 
 			// Assumption: grant_type, client_id and client_secret parameters are hard coded because 
 			// should be always the same.
