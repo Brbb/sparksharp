@@ -61,8 +61,6 @@ namespace Spark
 			}
 
 			return null;
-
-
 		}
 
 		public static async Task<List<TokenResponse>> ListTokensAsync(string email, string secret)

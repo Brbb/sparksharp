@@ -10,3 +10,15 @@ SparkSharp/packages/RestSharp.105.0.1/readme.txt
 *.exe
 
 *.mdb
+
+Spark/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+
+Spark/obj/x86/Debug/Spark.csproj.FilesWrittenAbsolute.txt
+
+Spark/obj/x86/Release/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+
+Spark/obj/x86/Release/Spark.csproj.FilesWrittenAbsolute.txt
+
+Tester/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+
+Tester/obj/x86/Debug/Tester.csproj.FilesWrittenAbsolute.txt
