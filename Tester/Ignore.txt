@@ -1,5 +1,0 @@
-﻿
-			string credentials = @"	<Credentials>
-										<DeviceID>55ff67065075555318151787</DeviceID>
-										<AccessToken>ddfd064a427ce61673433da76d5fb8181e459b75</AccessToken>
-									</Credentials>";
