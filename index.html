@@ -35,25 +35,66 @@
 
 <p>The <em>Spark Sharp</em> library is built using <a href="http://www.mono-project.com/">Mono</a> and needs <a href="http://restsharp.org/">RestSharp</a> and <a href="http://james.newtonking.com/json">Json.NET</a> to run, so add to your projects libraries starting from your beloved development environment.</p>
 
-<p>To give it a try download the <a href="https://github.com/Brbb/sparksharp/blob/master/temp_reader.ino">Temperature Spark Firmware</a> and flash your core, then clone this repo and run a test class using your own device id and access token like this:</p>
 
-<pre><code>using System;
-using Spark;
+<p>Login and token retrive:</p>
+<pre><code>
+  string username = "myUser";
+			string password = "myPassword";
 
-namespace Tester
-{
-   class MainClass
-   {
-       public static void Main (string[] args)
-       {
-        Configuration.DeviceID = "&lt;your_device_id&gt;";
-        Configuration.AccessToken = "&lt;your_access_token&gt;";
+			var baseUrl = "https://api.particle.io";
+			var accessTokenController = new AccessTokenController (baseUrl);
 
-        Spark.SparkResponse response =  Spark.RESTCore.SparkGetAsync ("temperature").Result;
-        Console.WriteLine(response.Result);
-    }
-   }
-}
+			// Login, if a token exists and it's not expired use it.
+			var accessTokens = accessTokenController.ListTokensAsync (username, password).Result;
+			var userToken = accessTokens.FirstOrDefault (t => t.Client == "user");
+
+			if (userToken == null) {
+				var authResponse = accessTokenController.GenerateAccessTokenAsync (username, password).Result;
+				userToken = new AccessToken {
+					Token = authResponse.Access_Token,
+					Expires_At = DateTime.UtcNow.AddSeconds (authResponse.Expires_In).ToString ("o"),
+					Client = "user"
+				};
+			}
+</code></pre>
+
+
+<p>Retrieve devices and perform operations:</p>
+<pre><code>
+var deviceController = new DeviceController (baseUrl);
+			var devices = deviceController.ListDevicesAsync (userToken.Token).Result;
+
+			var device = devices.FirstOrDefault ();
+
+			if (device != null && device.Connected) {
+				var cloudController = new CloudController (baseUrl, userToken, device);
+
+				Task.Run (async () => {
+
+					var deviceInfo = await deviceController.GetDeviceInfoByIdAsync (userToken.Token, device.Id);
+					var testFunction = deviceInfo.Functions.FirstOrDefault ();
+					var fResp = await cloudController.CallFunctionAsync (testFunction, "test");
+
+					if(fResp != null)
+						Console.WriteLine (fResp.Return_Value);	
+					
+				}).Wait();
+			}
+  
+</code>
+</pre>
+
+<p>Server Sent Events:</p>
+<pre><code>
+  var sseManager = new SSECore (baseUrl,userToken.Token);
+		
+	sseManager.SSEPublished += (eve) => {
+				Console.WriteLine (eve.Info.Data);
+			};
+
+			Task.Run (() => {
+				sseManager.GetStreamOfEvents ("Dummy");
+			});
 </code></pre>
 
 <h3>
