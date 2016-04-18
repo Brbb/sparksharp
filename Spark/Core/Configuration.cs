@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Xml;
 using System.Xml.Linq;
 using System.Linq;
 
 
-namespace Spark
+namespace Particle
 {
 	public class Configuration
 	{
@@ -13,14 +14,6 @@ namespace Spark
 
 		}
 
-		public static String DeviceID {
-			get;
-			set;
-		}
-		public static String AccessToken { 
-			get;
-			set;
-		}
 
 		public static void CheckForExistingCredentials ()
 		{

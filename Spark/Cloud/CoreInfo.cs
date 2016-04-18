@@ -1,6 +1,6 @@
 using System;
 
-namespace Spark
+namespace Particle
 {
 	public class CoreInfo
 	{

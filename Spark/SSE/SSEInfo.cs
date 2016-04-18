@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Spark
+namespace Particle
 {
 	public class SSEvent {
 		public string Name { get; set; }

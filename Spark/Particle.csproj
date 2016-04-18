@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{126818DB-56B5-4B40-AD5A-93496F6C06D7}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Spark</RootNamespace>
+    <RootNamespace>Particle</RootNamespace>
     <AssemblyName>Spark</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
@@ -33,28 +33,35 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="RestSharp">
-      <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="SSE\SSECore.cs" />
-    <Compile Include="REST\RESTCore.cs" />
-    <Compile Include="REST\CoreInfo.cs" />
-    <Compile Include="Core\Configuration.cs" />
     <Compile Include="SSE\SSEInfo.cs" />
-    <Compile Include="REST\Responses.cs" />
+    <Compile Include="Authentication\AccessTokenController.cs" />
+    <Compile Include="Authentication\AccessToken.cs" />
+    <Compile Include="Cloud\CloudController.cs" />
+    <Compile Include="Cloud\CoreInfo.cs" />
+    <Compile Include="Cloud\Responses.cs" />
+    <Compile Include="Device\DeviceController.cs" />
+    <Compile Include="Device\Device.cs" />
+    <Compile Include="Device\Variable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="SSE\" />
-    <Folder Include="REST\" />
     <Folder Include="Core\" />
+    <Folder Include="Authentication\" />
+    <Folder Include="Cloud\" />
+    <Folder Include="Device\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

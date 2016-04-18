@@ -1,0 +1,24 @@
+﻿<Properties StartupItem="Tester/Tester.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Spark/Cloud/CloudController.cs">
+    <Files>
+      <File FileName="Spark/Device/DeviceController.cs" Line="1" Column="1" />
+      <File FileName="Spark/Device/Device.cs" Line="1" Column="1" />
+      <File FileName="Spark/Cloud/CloudController.cs" Line="77" Column="39" />
+      <File FileName="Tester/Program.cs" Line="59" Column="57" />
+      <File FileName="Spark/SSE/SSECore.cs" Line="72" Column="1" />
+      <File FileName="Spark/Cloud/Responses.cs" Line="1" Column="1" />
+      <File FileName="Spark/SSE/SSEInfo.cs" Line="1" Column="1" />
+      <File FileName="Spark/Authentication/AccessToken.cs" Line="1" Column="1" />
+      <File FileName="Spark/Authentication/AccessTokenController.cs" Line="1" Column="1" />
+      <File FileName="Spark/Cloud/CoreInfo.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/fdl/Documents/Dev/sparksharp/Spark/Device/VariableBlob.cs" line="7" column="22" />
+      <Breakpoint file="/Users/fdl/Documents/Dev/sparksharp/Tester/Program.cs" line="60" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

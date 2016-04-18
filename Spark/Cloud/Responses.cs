@@ -1,6 +1,6 @@
 using System;
 
-namespace Spark
+namespace Particle
 {
 	
 	public class VariableResponse
@@ -12,19 +12,12 @@ namespace Spark
 		public CoreInfo CoreInfo {get;set; }
 	}
 
-
-	public class TokenResponse
-	{
-		public string Token { get; set; }
-		public string Expires_At { get; set; }
-		public string Client { get; set; }
-	}
-
 	public class AuthResponse
 	{
 		public string Access_Token { get; set;}
 		public string Token_Type {get;set;}
 		public long Expires_In { get; set;}
+		public string Refresh_Token {get;set;}
 	}
 
 	public class DeleteResponse

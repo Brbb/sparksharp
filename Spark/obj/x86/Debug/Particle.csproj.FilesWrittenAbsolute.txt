@@ -1,0 +1,7 @@
+/Users/fdl/Documents/Dev/sparksharp/Spark/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/fdl/Documents/Dev/sparksharp/Spark/bin/Debug/Spark.dll.mdb
+/Users/fdl/Documents/Dev/sparksharp/Spark/bin/Debug/Spark.dll
+/Users/fdl/Documents/Dev/sparksharp/Spark/obj/x86/Debug/Spark.dll
+/Users/fdl/Documents/Dev/sparksharp/Spark/obj/x86/Debug/Spark.dll.mdb
+/Users/fdl/Documents/Dev/sparksharp/Spark/bin/Debug/RestSharp.dll
+/Users/fdl/Documents/Dev/sparksharp/Spark/bin/Debug/Newtonsoft.Json.dll
