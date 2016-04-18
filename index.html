@@ -38,63 +38,61 @@
 
 <p>Login and token retrive:</p>
 <pre><code>
-  string username = "myUser";
-			string password = "myPassword";
+string username = "myUser";
+string password = "myPassword";
 
-			var baseUrl = "https://api.particle.io";
-			var accessTokenController = new AccessTokenController (baseUrl);
+var baseUrl = "https://api.particle.io";
+var accessTokenController = new AccessTokenController (baseUrl);
 
-			// Login, if a token exists and it's not expired use it.
-			var accessTokens = accessTokenController.ListTokensAsync (username, password).Result;
-			var userToken = accessTokens.FirstOrDefault (t => t.Client == "user");
+// Login, if a token exists and it's not expired use it.
+var accessTokens = accessTokenController.ListTokensAsync (username, password).Result;
+var userToken = accessTokens.FirstOrDefault (t => t.Client == "user");
 
-			if (userToken == null) {
-				var authResponse = accessTokenController.GenerateAccessTokenAsync (username, password).Result;
-				userToken = new AccessToken {
-					Token = authResponse.Access_Token,
-					Expires_At = DateTime.UtcNow.AddSeconds (authResponse.Expires_In).ToString ("o"),
-					Client = "user"
-				};
-			}
+if (userToken == null) {
+	var authResponse = accessTokenController.GenerateAccessTokenAsync (username, password).Result;
+	userToken = new AccessToken {
+		Token = authResponse.Access_Token,
+		Expires_At = DateTime.UtcNow.AddSeconds (authResponse.Expires_In).ToString ("o"),
+		Client = "user"
+	};
+}
 </code></pre>
 
 
 <p>Retrieve devices and perform operations:</p>
 <pre><code>
 var deviceController = new DeviceController (baseUrl);
-			var devices = deviceController.ListDevicesAsync (userToken.Token).Result;
+var devices = deviceController.ListDevicesAsync (userToken.Token).Result;
 
-			var device = devices.FirstOrDefault ();
+var device = devices.FirstOrDefault ();
 
-			if (device != null && device.Connected) {
-				var cloudController = new CloudController (baseUrl, userToken, device);
+if (device != null && device.Connected) {
+	var cloudController = new CloudController (baseUrl, userToken, device);
 
-				Task.Run (async () => {
+	Task.Run (async () => {
 
-					var deviceInfo = await deviceController.GetDeviceInfoByIdAsync (userToken.Token, device.Id);
-					var testFunction = deviceInfo.Functions.FirstOrDefault ();
-					var fResp = await cloudController.CallFunctionAsync (testFunction, "test");
+		var deviceInfo = await deviceController.GetDeviceInfoByIdAsync (userToken.Token, device.Id);
+		var testFunction = deviceInfo.Functions.FirstOrDefault ();
+		var fResp = await cloudController.CallFunctionAsync (testFunction, "test");
 
-					if(fResp != null)
-						Console.WriteLine (fResp.Return_Value);	
-					
-				}).Wait();
-			}
+		if(fResp != null)
+			Console.WriteLine (fResp.Return_Value);	
+		
+	}).Wait();
+}
   
 </code>
 </pre>
 
 <p>Server Sent Events:</p>
 <pre><code>
-  var sseManager = new SSECore (baseUrl,userToken.Token);
-		
-	sseManager.SSEPublished += (eve) => {
-				Console.WriteLine (eve.Info.Data);
-			};
-
-			Task.Run (() => {
-				sseManager.GetStreamOfEvents ("Dummy");
-			});
+var sseManager = new SSECore (baseUrl,userToken.Token);
+sseManager.SSEPublished += (eve) => {
+	Console.WriteLine (eve.Info.Data);
+	};
+Task.Run (() => {
+	sseManager.GetStreamOfEvents ("Dummy");
+	});
 </code></pre>
 
 <h3>
